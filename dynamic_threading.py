@@ -1,18 +1,24 @@
 import random
 import sys
 import time
+import threading
 
 UNBURNT= 0
 SMOLDERING= 1
 BURNING= 2
 BURNT= 3
+NUMS = 101
 
-def main(argv):
+# Here you can change the number of threads
+THREADS = 8
+
+def main(argv, start, end):
     forest_size = 20
-    prob_min = 0.0
-    prob_max = 1.0
     n_trials = 50
-    n_probs = 101
+    prob_min = start/100
+    prob_max = end/100
+    n_probs = end-start
+
     if len(argv) > 1:
         forest_size = int(argv[1])
     if len(argv) > 2:
@@ -26,7 +32,11 @@ def main(argv):
 
 
     for i_prob in range(n_probs):
-        prob_spread[i_prob] = prob_min + i_prob * (prob_max - prob_min) / (n_probs-1)
+        if(n_probs-1!=0):
+          prob_spread[i_prob] = prob_min + i_prob * (prob_max - prob_min) / (n_probs-1)
+        else:
+            prob_spread[i_prob] = prob_min + i_prob * (prob_max - prob_min) / (n_probs)
+            
         for i_trial in range(n_trials):
             burn_until_out(forest_size, forest, prob_spread[i_prob], forest_size//2, forest_size//2)
             percent_burned[i_prob] += get_percent_burned(forest_size, forest)
@@ -123,9 +133,35 @@ def print_forest(forest_size,forest):
                 print("X",end="")
         print("\n")
 
+def thread_function(name,start,end,j):
+    print(f"Thread {j} : {start}")
+    main(sys.argv,start,end)
+
 
 if __name__ == '__main__':
     start_time = time.time()
-    main(sys.argv)
-    end_time = time.time()
-    print("Execution time:", end_time-start_time)
+    
+i = 0
+stop_loop = False
+while(i<NUMS and not(stop_loop)):
+
+    step = 2
+    for j in range(1,THREADS):
+        start = i+j
+        end = start+1
+        globals()['thread' + str(j)] =  threading.Thread(target=thread_function, args=(i,start,end,j) ) 
+        if(start>=NUMS):
+            stop_loop=True
+            break
+        else:
+            globals()['thread' + str(j)].start()
+            globals()['thread' + str(j)].join()
+        
+        
+    i+=THREADS-1
+    
+
+
+end_time = time.time()
+print("Execution time:", end_time-start_time)
+

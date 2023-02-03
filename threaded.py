@@ -18,9 +18,9 @@ THREADS = 20
 
 def main(argv, start, end):
     forest_size = 20
+    n_trials = 500
     prob_min = start/100
     prob_max = end/100
-    n_trials = 500
     n_probs = end-start
     if len(argv) > 1:
         forest_size = int(argv[1])
@@ -149,7 +149,7 @@ if __name__ == '__main__':
             start = (step*i)+1
         end = step*(i+1)
         # If it is the last
-        if(i==THREADS-1):
+        if(i==THREADS-1):    
             end=NUMS
         t = threading.Thread(target=thread_function, args=(i,start,end))
         threads.append(t)
