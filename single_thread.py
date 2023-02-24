@@ -11,7 +11,7 @@ def main(argv):
     forest_size = 20
     prob_min = 0.0
     prob_max = 1.0
-    n_trials = 500
+    n_trials = 50
     n_probs = 101
     if len(argv) > 1:
         forest_size = int(argv[1])

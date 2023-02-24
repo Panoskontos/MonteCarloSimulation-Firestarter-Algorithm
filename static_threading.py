@@ -18,7 +18,7 @@ THREADS = 20
 
 def main(argv, start, end):
     forest_size = 20
-    n_trials = 500
+    n_trials = 50
     prob_min = start/100
     prob_max = end/100
     n_probs = end-start
