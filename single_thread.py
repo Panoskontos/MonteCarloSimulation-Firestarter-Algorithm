@@ -8,7 +8,7 @@ BURNING= 2
 BURNT= 3
 
 def main(argv):
-    forest_size = 20
+    forest_size = 50
     prob_min = 0.0
     prob_max = 1.0
     n_trials = 50

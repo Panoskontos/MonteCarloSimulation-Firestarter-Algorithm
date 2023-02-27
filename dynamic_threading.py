@@ -10,7 +10,7 @@ BURNT= 3
 NUMS = 101
 
 # Here you can change the number of threads
-THREADS = 8
+THREADS = 30
 
 def main(argv, start, end):
     forest_size = 20

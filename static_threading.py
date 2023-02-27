@@ -13,7 +13,7 @@ BURNT= 3
 NUMS = 101
 
 # Here you can change the number of threads
-THREADS = 20
+THREADS = 30
 
 
 def main(argv, start, end):
