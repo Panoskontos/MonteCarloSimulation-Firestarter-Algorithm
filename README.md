@@ -25,3 +25,6 @@ Note: The project involves comparing the performance of the two parallel impleme
 Results (in seconds)
 
 ![results](https://github.com/Panoskontos/MonteCarloSimulation-Firestarter-Algorithm/assets/65974766/9ea790d7-1b49-4418-94ed-7a10bc4a0641)
+
+
+Youtube Video on: https://www.youtube.com/watch?v=bzJVH8c63GA&ab_channel=PanosKontos 
