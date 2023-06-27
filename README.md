@@ -20,3 +20,8 @@ Version 2: Parallelize the outer loop with dynamic workload assignment to overco
 Instructions:
 
 Note: The project involves comparing the performance of the two parallel implementations by varying the forest size and the number of threads.
+
+
+Results (in seconds)
+
+![results](https://github.com/Panoskontos/MonteCarloSimulation-Firestarter-Algorithm/assets/65974766/9ea790d7-1b49-4418-94ed-7a10bc4a0641)
